@@ -14,12 +14,12 @@ const { UserCreateDto} = require("./user.request");
 
 
 //Post:-
-userRouter.use(checklogin)
+// userRouter.use(checklogin)
 
 userRouter.route("/")
 // for multiple file upload:- uploader.array('image')
 // forsingle file :- uploader.single('image')
-  .post(allowUser,setPath('/user'),uploader.single('image'),bodyValidator(UserCreateDto), userCtrl.userCreate)
+  .post(checklogin,allowUser,setPath('/user'),uploader.single('image'),bodyValidator(UserCreateDto), userCtrl.userCreate)
    // Get:-
    .get(userCtrl.ListAllUsers)
  
